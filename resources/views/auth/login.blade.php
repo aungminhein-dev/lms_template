@@ -12,16 +12,26 @@
                         <h1>Welcome to Preskool</h1>
                         <p class="account-subtitle">Need an account? <a href="{{ route('register') }}">Sign Up</a></p>
                         <h2>Sign in</h2>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-                        <form action="index.html">
+                        <form action="{{ route('login') }}" method="POST">
+                            @csrf
                             <div class="form-group">
-                                <label>Username <span class="login-danger">*</span></label>
-                                <input class="form-control" type="text">
+                                <label>Email <span class="login-danger">*</span></label>
+                                <input name="email" class="form-control" type="text">
                                 <span class="profile-views"><i class="fas fa-user-circle"></i></span>
                             </div>
                             <div class="form-group">
                                 <label>Password <span class="login-danger">*</span></label>
-                                <input class="form-control pass-input" type="text">
+                                <input name="password" class="form-control pass-input" type="text">
                                 <span class="profile-views feather-eye toggle-password"></span>
                             </div>
                             <div class="forgotpass">

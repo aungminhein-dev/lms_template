@@ -7,11 +7,15 @@
     <title>@yield('title')</title>
     <link rel="shortcut icon" href="assets/img/favicon.png">
     @include('admin.layout.style')
+    @stack('styles')
 </head>
 
 <body>
 
     <div class="main-wrapper">
+        <form id="logoutForm" action="{{ route('logout') }}" method="post">
+            @csrf
+        </form>
 
         @include('admin.layout.navbar')
 
@@ -26,6 +30,13 @@
     </div>
 
     @include('admin.layout.script')
+    <script>
+        function logout() {
+            $('#logoutForm').submit()
+        }
+    </script>
+    @stack('scripts')
+
 </body>
 
 </html>

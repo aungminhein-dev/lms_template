@@ -5,26 +5,47 @@
                 <li class="menu-title">
                     <span>Main Menu</span>
                 </li>
-                <li class="submenu active">
-                    <a href="#"><i class="feather-grid"></i> <span> Dashboard</span> <span
-                            class="menu-arrow"></span></a>
+                <!-- Dashboard Menu -->
+                <li class="submenu {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                    <a href="#">
+                        <i class="feather-grid"></i>
+                        <span>Dashboard</span>
+                        <span class="menu-arrow"></span>
+                    </a>
                     <ul>
-                        <li><a href="index.html" class="active">Admin Dashboard</a></li>
-                        <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
-                        <li><a href="student-dashboard.html">Student Dashboard</a></li>
+                        <li>
+                            <a href="{{ route('admin.dashboard') }}"
+                                class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                                Admin Dashboard
+                            </a>
+                        </li>
                     </ul>
                 </li>
-                <li class="submenu">
-                    <a href="#"><i class="fas fa-graduation-cap"></i> <span> Students</span> <span
-                            class="menu-arrow"></span></a>
+
+                <!-- Users Menu -->
+                <li class="submenu {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
+                    <a href="#">
+                        <i class="fas fa-users"></i>
+                        <span>Users</span>
+                        <span class="menu-arrow"></span>
+                    </a>
                     <ul>
-                        <li><a href="students.html">Student List</a></li>
-                        <li><a href="student-details.html">Student View</a></li>
-                        <li><a href="add-student.html">Student Add</a></li>
-                        <li><a href="edit-student.html">Student Edit</a></li>
+                        <li>
+                            <a href="{{ route('admin.user.index') }}"
+                                class="{{ request()->routeIs('admin.user.index') ? 'active' : '' }}">
+                                User List
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.user.create') }}"
+                                class="{{ request()->routeIs('admin.user.create') ? 'active' : '' }}">
+                                Create User
+                            </a>
+                        </li>
                     </ul>
                 </li>
-                <li class="submenu">
+
+                {{-- <li class="submenu">
                     <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span
                             class="menu-arrow"></span></a>
                     <ul>
@@ -264,7 +285,7 @@
                             <a href="javascript:void(0);"> <span>Level 1</span></a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>
